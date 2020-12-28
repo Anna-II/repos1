@@ -13,6 +13,10 @@ public class SalaryService {
     @Autowired
     SalaryMapper salaryMapper;
 
+    public List<Salary> getSalaries() {
+        return salaryMapper.getSalaries();
+    }
+
     public List<Salary> getAllSalaries() {
         return salaryMapper.getAllSalaries();
     }
