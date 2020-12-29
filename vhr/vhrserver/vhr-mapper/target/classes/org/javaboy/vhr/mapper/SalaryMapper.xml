@@ -16,7 +16,19 @@
         <result column="accumulationFundBase" property="accumulationFundBase" jdbcType="INTEGER"/>
         <result column="accumulationFundPer" property="accumulationFundPer" jdbcType="REAL"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
+        <association property="empSalary" javaType="org.javaboy.vhr.model.EmpSalary" resultMap="EmpSalaryMap"></association>
+        <association property="emp" javaType="org.javaboy.vhr.model.Employee" resultMap="EmpMap"></association>
     </resultMap>
+    <resultMap id="EmpSalaryMap" type="org.javaboy.vhr.model.EmpSalary" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="eid" property="eid" jdbcType="INTEGER" />
+        <result column="sid" property="sid" jdbcType="INTEGER" />
+    </resultMap>
+    <resultMap id="EmpMap" type="org.javaboy.vhr.model.Employee">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
     id, basicSalary, bonus, lunchSalary, trafficSalary, allSalary, pensionBase, pensionPer, 
     createDate, medicalBase, medicalPer, accumulationFundBase, accumulationFundPer, name
@@ -25,6 +37,12 @@
         select
         <include refid="Base_Column_List"/>
         from salary
+    </select>
+    <select id="getSalaries" resultMap="BaseResultMap">
+        select emp.id,emp.name,basicSalary,bonus, lunchSalary, trafficSalary, allSalary
+        from salary s,employee emp,empsalary emps
+        where s.id=emps.sid
+        and emps.eid=emp.id
     </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select

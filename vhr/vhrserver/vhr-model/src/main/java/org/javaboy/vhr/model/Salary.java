@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+import org.javaboy.vhr.model.EmpSalary;
+
 public class Salary {
     private Integer id;
 
@@ -33,6 +35,26 @@ public class Salary {
     private Float accumulationFundPer;
 
     private String name;
+
+    private EmpSalary empSalary;
+
+    private Employee emp;
+
+    public Employee getEmployee() {
+        return emp;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.emp = employee;
+    }
+
+    public EmpSalary getEmpSalary() {
+        return empSalary;
+    }
+
+    public void setEmpSalary(EmpSalary empSalary) {
+        this.empSalary = empSalary;
+    }
 
     public Integer getId() {
         return id;

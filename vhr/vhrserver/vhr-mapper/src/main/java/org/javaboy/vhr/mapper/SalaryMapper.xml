@@ -39,7 +39,7 @@
         from salary
     </select>
     <select id="getSalaries" resultMap="BaseResultMap">
-        select eid,emp.name,basicSalary,bonus, lunchSalary, trafficSalary, allSalary
+        select emp.id,emp.name,basicSalary,bonus, lunchSalary, trafficSalary, allSalary
         from salary s,employee emp,empsalary emps
         where s.id=emps.sid
         and emps.eid=emp.id
