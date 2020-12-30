@@ -27,6 +27,7 @@
     <resultMap id="EmpMap" type="org.javaboy.vhr.model.Employee">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="departmentId" property="departmentId" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -43,6 +44,13 @@
         from salary s,employee emp,empsalary emps
         where s.id=emps.sid
         and emps.eid=emp.id
+    </select>
+    <select id="getSalaryByDep" resultMap="BaseResultMap">
+        select emp.id,emp.name,basicSalary,bonus, lunchSalary, trafficSalary, allSalary
+        from salary s,employee emp,empsalary emps
+        where s.id=emps.sid
+          and emps.eid=emp.id
+        and emp.departmentId=#{departmentId,jdbcType=INTEGER}
     </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select

@@ -17,6 +17,10 @@ public class SalaryService {
         return salaryMapper.getSalaries();
     }
 
+    public List<Salary> getSalaryByDep(Integer departmentId) {
+        return salaryMapper.getSalaryByDep(departmentId);
+    }
+
     public List<Salary> getAllSalaries() {
         return salaryMapper.getAllSalaries();
     }

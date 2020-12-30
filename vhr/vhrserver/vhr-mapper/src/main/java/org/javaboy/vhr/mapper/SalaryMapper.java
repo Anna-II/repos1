@@ -20,4 +20,7 @@ public interface SalaryMapper {
     List<Salary> getAllSalaries();
 
     List<Salary> getSalaries();
+
+    List<Salary> getSalaryByDep(Integer departmentId);
+
 }
